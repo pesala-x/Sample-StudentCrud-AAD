@@ -1,17 +1,17 @@
 package lk.ijse.gdse.aad68.studentmanagecrudaad.dto;
 
 
-import jakarta.json.Json;
-import jakarta.json.JsonObject;
-import jakarta.json.JsonReader;
 import jakarta.servlet.ServletException;
+import lk.ijse.gdse.aad68.studentmanagecrudaad.controller.StudentDTO;
+import lk.ijse.gdse.aad68.studentmanagecrudaad.util.Util;
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.Writer;
 
 @WebServlet(urlPatterns = "/student")
 public class Student extends HttpServlet {
@@ -45,10 +45,33 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws I
     }
     //Process the jason
 
-    JsonReader reader = Json.createReader(req.getReader());
-    JsonObject jsonObject = reader.readObject();
-    String email = jsonObject.getString("email");
-    System.out.println(email);
+//    JsonReader reader = Json.createReader(req.getReader());
+//    JsonObject jsonObject = reader.readObject();
+//    String email = jsonObject.getString("email");
+//    System.out.println(email);
+
+    // Send data to the client
+
+//    var writer = resp.getWriter();
+//    writer.write(email);
+
+    //Optional -jason Array processing
+//    JsonArray jsonArray = reader.readArray();
+//    for (int i = 0; i <jsonArray.size(); i++) {
+//        JsonObject object = jsonArray.getJsonObject(i);
+//        System.out.println(object.getString("name"));
+//        System.out.println(object.getString("email"));
+//
+//    }
+
+    //Object binding of the JSON
+    Jsonb jsnob = JsonbBuilder.create();
+    StudentDTO student = jsnob.fromJson(req.getReader(),StudentDTO.class);
+    student.setId(Util.idGenerate());
+    System.out.println("ok now Response created ");
+    //create Response
+    resp.setContentType("application/json");
+    jsnob.toJson(student,resp.getWriter());
 }
 
     @Override
