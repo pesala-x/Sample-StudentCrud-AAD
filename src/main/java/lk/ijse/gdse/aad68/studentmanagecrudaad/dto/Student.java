@@ -14,14 +14,15 @@ import java.io.IOException;
 public class Student extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        if(req.getContentType() == null || ! req.getContentType().toLowerCase().startsWith("application/json")){
+        if (req.getContentType() == null || !req.getContentType().toLowerCase().startsWith("application/json")) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
 
         }
         BufferedReader reader = req.getReader();
-        StringBuilder sb =new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         reader.lines().forEach(line -> sb.append(line).append("\n"));
 
+        System.out.println(sb.toString());
 
 //        var id = req.getParameter("id");
 //        var name = req.getParameter("name");
