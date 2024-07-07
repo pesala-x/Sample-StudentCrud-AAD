@@ -1,6 +1,9 @@
 package lk.ijse.gdse.aad68.studentmanagecrudaad.dto;
 
 
+import jakarta.json.Json;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonReader;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,17 +15,17 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/student")
 public class Student extends HttpServlet {
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        if (req.getContentType() == null || !req.getContentType().toLowerCase().startsWith("application/json")) {
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
-
-        }
-        BufferedReader reader = req.getReader();
-        StringBuilder sb = new StringBuilder();
-        reader.lines().forEach(line -> sb.append(line).append("\n"));
-
-        System.out.println(sb.toString());
+//    @Override
+//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+//        if (req.getContentType() == null || !req.getContentType().toLowerCase().startsWith("application/json")) {
+//            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+//
+//        }
+//        BufferedReader reader = req.getReader();
+//        StringBuilder sb = new StringBuilder();
+//        reader.lines().forEach(line -> sb.append(line).append("\n"));
+//
+//        System.out.println(sb.toString());
 
 //        var id = req.getParameter("id");
 //        var name = req.getParameter("name");
@@ -35,7 +38,18 @@ public class Student extends HttpServlet {
 //        System.out.println("E-mail : " + email);
 //        System.out.println("City : " + city);
 //        System.out.println("Level : " + level);
+@Override
+protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    if (req.getContentType() == null || !req.getContentType().toLowerCase().startsWith("application/json")) {
+        resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
     }
+    //Process the jason
+
+    JsonReader reader = Json.createReader(req.getReader());
+    JsonObject jsonObject = reader.readObject();
+    String email = jsonObject.getString("email");
+    System.out.println(email);
+}
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

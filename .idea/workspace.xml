@@ -10,8 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00a0807d-aa08-4959-ae61-f21f30dcdd96" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/git readme.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/gdse/aad68/studentmanagecrudaad/dto/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/gdse/aad68/studentmanagecrudaad/dto/Student.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -167,7 +167,7 @@
       <option name="presentableId" value="Default" />
       <updated>1720329569818</updated>
       <workItem from="1720329570881" duration="1736000" />
-      <workItem from="1720332965217" duration="2808000" />
+      <workItem from="1720332965217" duration="4709000" />
     </task>
     <servers />
   </component>
